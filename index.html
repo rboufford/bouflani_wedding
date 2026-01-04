@@ -1,0 +1,458 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Zsanelle & Ryan — Death Valley Wedding Weekend</title>
+  <meta name="description" content="Wedding weekend details for Zsanelle & Ryan in Death Valley. Timeline, ceremony info, exploring, dining, FAQ, and more." />
+
+  <style>
+    :root{
+      /* Desert dusk palette */
+      --bg:#0f1115;
+      --bg2:#171a22;
+      --paper:#141824;
+      --card:#171c2a;
+      --ink:#f3f4f6;
+      --muted:#c2c7d1;
+      --line:rgba(255,255,255,.10);
+      --accent:#c9786a;   /* desert rose */
+      --accent2:#74b5a7;  /* cool sage */
+      --accent3:#d3aa6a;  /* sand */
+      --shadow: 0 18px 60px rgba(0,0,0,.55);
+      --radius:18px;
+      --max:1080px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--ink);
+      background:
+        radial-gradient(900px 420px at 70% -10%, rgba(201,120,106,.28), transparent 60%),
+        radial-gradient(820px 380px at 20% 0%, rgba(116,181,167,.18), transparent 55%),
+        linear-gradient(180deg, var(--bg), var(--bg2));
+      line-height:1.55;
+    }
+    a{color:inherit; text-decoration:none}
+    a:focus, button:focus{outline:2px solid rgba(201,120,106,.45); outline-offset:2px}
+
+    /* Topbar */
+    .topbar{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter:saturate(140%) blur(12px);
+      background:rgba(15,17,21,.72);
+      border-bottom:1px solid var(--line);
+    }
+    .nav{
+      max-width:var(--max); margin:0 auto;
+      display:flex; align-items:center; justify-content:space-between;
+      padding:12px 16px;
+      gap:12px;
+    }
+    .brand{display:flex; flex-direction:column; gap:2px}
+    .brand .kicker{
+      letter-spacing:.14em; text-transform:uppercase;
+      font-size:11px; color:var(--muted);
+    }
+    .brand .title{
+      font-family: ui-serif, Georgia, "Times New Roman", Times, serif;
+      font-size:18px; font-weight:700;
+    }
+
+    .nav-right{display:flex; align-items:center; gap:10px}
+    .chip{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 10px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      background:rgba(23,28,42,.75);
+      box-shadow: 0 10px 30px rgba(0,0,0,.35);
+      font-size:12px;
+      color:var(--muted);
+      white-space:nowrap;
+    }
+    .chip strong{color:var(--ink)}
+    .hamburger{
+      display:none;
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:10px 12px;
+      background:rgba(23,28,42,.85);
+      box-shadow: 0 10px 30px rgba(0,0,0,.35);
+      font-size:14px;
+      color:var(--ink);
+      cursor:pointer;
+    }
+
+    .menu{
+      display:flex; align-items:center; gap:8px;
+      position:relative;
+    }
+    .menu a, .menu button{
+      font-size:14px;
+      padding:10px 12px;
+      border-radius:14px;
+      border:1px solid transparent;
+      background:transparent;
+      color:var(--ink);
+      cursor:pointer;
+    }
+    .menu a:hover, .menu button:hover{
+      background:rgba(201,120,106,.10);
+      border-color:rgba(201,120,106,.15);
+    }
+    .menu .primary{
+      background:linear-gradient(135deg, rgba(201,120,106,.95), rgba(211,170,106,.85));
+      color:#141824;
+      border:0;
+      font-weight:700;
+    }
+
+    /* Dropdown */
+    .dropdown{position:relative}
+    .dropdown-panel{
+      position:absolute; right:0; top:46px;
+      width:min(92vw, 330px);
+      background:rgba(20,24,36,.98);
+      border:1px solid var(--line);
+      border-radius:16px;
+      box-shadow: var(--shadow);
+      padding:10px;
+      display:none;
+    }
+    .dropdown-panel a{
+      display:block;
+      padding:10px 10px;
+      border-radius:12px;
+      color:var(--ink);
+    }
+    .dropdown-panel a:hover{background:rgba(116,181,167,.10)}
+    .dropdown-panel .group{
+      padding:8px 10px 6px;
+      font-size:11px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color:var(--muted);
+    }
+    .dropdown.open .dropdown-panel{display:block}
+
+    /* Mobile menu behavior */
+    @media (max-width: 900px){
+      .chip{display:none}
+      .hamburger{display:inline-flex}
+      .menu{
+        display:none;
+        position:absolute;
+        left:0; right:0;
+        top:60px;
+        padding:10px 16px 16px;
+        background:rgba(15,17,21,.92);
+        border-bottom:1px solid var(--line);
+        flex-direction:column;
+        align-items:stretch;
+        gap:8px;
+      }
+      .menu.open{display:flex}
+      .menu a, .menu button{
+        border:1px solid var(--line);
+        background:rgba(23,28,42,.85);
+      }
+      .dropdown-panel{
+        position:static;
+        width:100%;
+        box-shadow:none;
+        border-radius:14px;
+      }
+      .dropdown.open .dropdown-panel{display:block}
+    }
+
+    /* Layout */
+    .wrap{max-width:var(--max); margin:0 auto; padding:18px 16px 72px}
+
+    .hero{
+      margin-top:18px;
+      border:1px solid var(--line);
+      background:rgba(20,24,36,.70);
+      border-radius:26px;
+      overflow:hidden;
+      box-shadow: var(--shadow);
+    }
+
+    /* Hero image placeholder (you will replace later) */
+    .hero-media{
+      height:260px;
+      background:
+        radial-gradient(900px 300px at 70% 10%, rgba(201,120,106,.35), transparent 60%),
+        radial-gradient(700px 240px at 30% 30%, rgba(116,181,167,.22), transparent 55%),
+        linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.65));
+      display:flex;
+      align-items:flex-end;
+      position:relative;
+    }
+    .hero-media::after{
+      content:"HERO IMAGE PLACEHOLDER";
+      position:absolute;
+      top:16px; left:16px;
+      font-size:11px;
+      letter-spacing:.16em;
+      color:rgba(255,255,255,.70);
+      text-transform:uppercase;
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.16);
+      background:rgba(0,0,0,.22);
+    }
+    .hero-overlay{
+      width:100%;
+      padding:18px 18px 16px;
+    }
+    .hero-overlay h1{
+      margin:0;
+      font-family: ui-serif, Georgia, "Times New Roman", Times, serif;
+      font-size:36px;
+      letter-spacing:.02em;
+    }
+    .hero-overlay p{
+      margin:8px 0 0;
+      color:rgba(255,255,255,.85);
+      max-width:70ch;
+    }
+
+    .hero-body{
+      padding:18px;
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:14px;
+    }
+    @media (max-width: 900px){
+      .hero-media{height:235px}
+      .hero-overlay h1{font-size:32px}
+      .hero-body{grid-template-columns:1fr}
+    }
+
+    .card{
+      border:1px solid var(--line);
+      background:rgba(23,28,42,.82);
+      border-radius:var(--radius);
+      padding:16px;
+    }
+    .card h2{
+      margin:0 0 8px;
+      font-family: ui-serif, Georgia, "Times New Roman", Times, serif;
+      font-size:20px;
+    }
+    .card p{margin:0 0 10px; color:var(--muted)}
+    .card ul{margin:8px 0 0 18px; color:var(--muted)}
+    .card li{margin:6px 0}
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:14px;
+      margin-top:14px;
+    }
+    @media (max-width: 900px){
+      .grid{grid-template-columns:1fr}
+    }
+
+    .badge{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:10px 12px;
+      border-radius:999px;
+      border:1px dashed rgba(201,120,106,.35);
+      background:rgba(201,120,106,.10);
+      color:var(--ink);
+      font-size:13px;
+      margin-top:10px;
+      width:fit-content;
+    }
+    .callout{
+      display:flex; gap:10px; align-items:flex-start;
+      padding:12px;
+      border-radius:16px;
+      border:1px solid rgba(116,181,167,.35);
+      background:rgba(116,181,167,.10);
+      margin-top:12px;
+    }
+    .dot{width:10px; height:10px; border-radius:50%; background:var(--accent2); margin-top:5px}
+
+    .footer{
+      margin-top:26px;
+      padding-top:16px;
+      border-top:1px solid var(--line);
+      color:var(--muted);
+      font-size:13px;
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="topbar">
+    <div class="nav">
+      <div class="brand">
+        <div class="kicker">Death Valley Wedding Weekend</div>
+        <div class="title">Zsanelle & Ryan</div>
+      </div>
+
+      <div class="nav-right">
+        <div class="chip"><strong>Jan 9–11, 2026</strong> · Oasis at Death Valley</div>
+
+        <button id="hamburger" class="hamburger" aria-label="Open menu" aria-expanded="false">Menu</button>
+
+        <div id="menu" class="menu">
+          <a class="primary" href="index.html" data-nav>Home</a>
+
+          <div id="sectionsDD" class="dropdown">
+            <button id="sectionsBtn" aria-expanded="false">Sections ▾</button>
+            <div class="dropdown-panel" role="menu" aria-label="Sections">
+              <div class="group">Wedding Weekend</div>
+              <a href="welcome.html" data-nav>Welcome to Death Valley</a>
+              <a href="overview.html" data-nav>Weekend Overview</a>
+              <a href="ceremony.html" data-nav>Ceremony Info</a>
+              <a href="dress-weather.html" data-nav>Dress Code & Weather</a>
+              <a href="gifts.html" data-nav>Gift Giving</a>
+
+              <div class="group">Explore & Eat</div>
+              <a href="exploring.html" data-nav>Exploring Death Valley</a>
+              <a href="dining.html" data-nav>Dining</a>
+
+              <div class="group">Help</div>
+              <a href="faq.html" data-nav>FAQ</a>
+            </div>
+          </div>
+
+          <a href="overview.html" data-nav>Timeline</a>
+          <a href="faq.html" data-nav>FAQ</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="hero">
+      <div class="hero-media" role="img" aria-label="Hero image placeholder">
+        <div class="hero-overlay">
+          <h1>Zsanelle &amp; Ryan</h1>
+          <p>
+            Welcome to our Death Valley wedding weekend. This site has the timeline, ceremony details,
+            exploring ideas, dining tips, and FAQs—all optimized for your phone.
+          </p>
+        </div>
+      </div>
+
+      <div class="hero-body">
+        <div class="card">
+          <h2>Quick Links</h2>
+          <p>Tap a section to jump right in.</p>
+          <ul>
+            <li><a href="overview.html">Weekend Overview &amp; Timeline</a></li>
+            <li><a href="ceremony.html">Ceremony Information (Hole in the Wall)</a></li>
+            <li><a href="exploring.html">Exploring Death Valley</a></li>
+            <li><a href="dining.html">Dining</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+          </ul>
+          <div class="badge">Mobile-friendly · Simple · Easy to share</div>
+
+          <div class="callout">
+            <div class="dot"></div>
+            <div>
+              <strong>Offline maps reminder</strong>
+              <div style="color:var(--muted); font-size:13px; margin-top:4px;">
+                Cell service is limited in the park. Download offline maps before you arrive.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>At a Glance</h2>
+          <ul>
+            <li><strong>Friday 4:00–6:00 PM:</strong> Welcome cocktail party (Panamint Deck)</li>
+            <li><strong>Saturday 12:45 PM:</strong> Meet at lobby · <strong>1:00 PM:</strong> Caravan · <strong>2:00 PM:</strong> Ceremony</li>
+            <li><strong>Saturday evening:</strong> Violin + apps · Open bar · Dinner · Party</li>
+          </ul>
+          <p style="margin-top:10px; color:var(--muted); font-size:13px;">
+            Note: The other pages (Welcome, Overview, Ceremony, etc.) will go live as we add them next.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Welcome to Death Valley</h2>
+        <p>
+          Why this place matters to us—and why it’s the perfect “desert dusk” backdrop for our bougie granola weekend.
+        </p>
+        <a class="badge" href="welcome.html">Read the story →</a>
+      </div>
+
+      <div class="card">
+        <h2>Need the essentials?</h2>
+        <p>
+          The most important times and where to be. (We’ll put the full schedule on the Timeline page.)
+        </p>
+        <a class="badge" href="overview.html">View the schedule →</a>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div>© <span id="year"></span> Zsanelle & Ryan</div>
+      <div>Made with love in Death Valley</div>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      const btn = document.getElementById('hamburger');
+      const menu = document.getElementById('menu');
+      const ddBtn = document.getElementById('sectionsBtn');
+      const dd = document.getElementById('sectionsDD');
+
+      function closeDropdown(){ if(dd) dd.classList.remove('open'); }
+      function closeMenu(){
+        if(menu) menu.classList.remove('open');
+        if(btn) btn.setAttribute('aria-expanded','false');
+      }
+
+      if(btn && menu){
+        btn.addEventListener('click', () => {
+          const open = menu.classList.toggle('open');
+          btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+          if(!open) closeDropdown();
+        });
+      }
+
+      if(ddBtn && dd){
+        ddBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          const isOpen = dd.classList.toggle('open');
+          ddBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+      }
+
+      document.addEventListener('click', (e) => {
+        const clickedInsideDD = dd && dd.contains(e.target);
+        const clickedDDButton = ddBtn && ddBtn.contains(e.target);
+        if(dd && !clickedInsideDD && !clickedDDButton) closeDropdown();
+      });
+
+      document.querySelectorAll('a[data-nav]').forEach(a=>{
+        a.addEventListener('click', ()=>{
+          closeDropdown();
+          closeMenu();
+        });
+      });
+
+      const year = document.getElementById('year');
+      if(year) year.textContent = new Date().getFullYear();
+    })();
+  </script>
+</body>
+</html>
