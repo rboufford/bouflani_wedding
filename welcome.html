@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Welcome to Death Valley — Zsanelle & Ryan</title>
+  <meta name="description" content="Why Death Valley became meaningful to us—and why we chose it for our wedding weekend." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <!-- Top Navigation -->
+  <div class="topbar">
+    <div class="nav">
+      <div class="brand">
+        <div class="kicker">Death Valley Wedding Weekend</div>
+        <div class="title">Zsanelle & Ryan</div>
+      </div>
+
+      <div class="nav-right">
+        <div class="chip"><strong>Jan 9–11, 2026</strong> · Oasis at Death Valley</div>
+
+        <button id="hamburger" class="hamburger" aria-label="Open menu" aria-expanded="false">Menu</button>
+
+        <div id="menu" class="menu">
+          <a class="primary" href="index.html" data-nav>Home</a>
+
+          <div id="sectionsDD" class="dropdown">
+            <button id="sectionsBtn" aria-expanded="false">Sections ▾</button>
+            <div class="dropdown-panel" role="menu" aria-label="Sections">
+              <div class="group">Wedding Weekend</div>
+              <a href="welcome.html" data-nav>Welcome to Death Valley</a>
+              <a href="overview.html" data-nav>Weekend Overview</a>
+              <a href="ceremony.html" data-nav>Ceremony Info</a>
+              <a href="dress-weather.html" data-nav>Dress Code & Weather</a>
+              <a href="gifts.html" data-nav>Gift Giving</a>
+
+              <div class="group">Explore & Eat</div>
+              <a href="exploring.html" data-nav>Exploring Death Valley</a>
+              <a href="dining.html" data-nav>Dining</a>
+
+              <div class="group">Help</div>
+              <a href="faq.html" data-nav>FAQ</a>
+            </div>
+          </div>
+
+          <a href="overview.html" data-nav>Timeline</a>
+          <a href="faq.html" data-nav>FAQ</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Page Content -->
+  <div class="wrap">
+    <div class="breadcrumb"><a href="index.html" style="color:var(--accent)">Home</a> / Welcome</div>
+
+    <h1 class="section-title">Welcome to Death Valley</h1>
+    <div class="small">Why this place matters to us.</div>
+    <div class="divider"></div>
+
+    <div class="card">
+      <p><strong>Death Valley was never part of a plan</strong>; it was a detour born out of curiosity. For years, Ryan stared at the Death Valley exit sign on the drive to Las Vegas, wondering what was out there. One day, while brainstorming weekend getaways, he shared that curiosity with Zsanelle—and on a whim, she said: “Let’s find out.”</p>
+
+      <p>We packed the car with camping gear and food, got a later start than planned (per usual), and arrived after dark with no reservations, no expectations, and no clear idea where we’d be sleeping. Ryan had a campsite in mind, but the road was closed. With a tired and hungry girlfriend in the passenger seat, it was time for Plan B. We pitched our tent that first night in what can generously be described as a glorified parking lot of a campground, ate a couple of sad freeze-dried meals, and went straight to sleep.</p>
+
+      <p><strong>The next day, everything changed.</strong> We stumbled upon a place called <em>Hole in the Wall</em>. We didn’t know what to expect—but the moment we arrived, we were completely taken by it: towering rock walls, total quiet, and a sky that felt impossibly big. We camped there that night, drinking and laughing under the stars, sharing one of those evenings that stays with you long after it’s over. Zsanelle made her version of Korean BBQ (which turns out is a perfect camping meal), and we both knew we had found something special.</p>
+
+      <p>The following day we stopped for a drink at <strong>The Oasis</strong> and instantly fell in love with the lush grounds, sweeping views, and—of course—the prickly pear margaritas. An unexpected resort in the middle of one of the most remote landscapes on Earth felt like the perfect reflection of us. Zsanelle loves beautiful spaces, great food, and a little luxury. Ryan loves camping, wide-open landscapes, and the simplicity of being far from everything. What we discovered in Death Valley is that we don’t just tolerate what the other loves—we genuinely love it too.</p>
+
+      <p>Somewhere between a sleeping bag under the stars and a cocktail at sunset, we found our sweet spot. We like to call it <strong>bougie granola</strong>.</p>
+
+      <p>Death Valley became meaningful to us because it represents balance, curiosity, and the kind of unexpected beauty that shows up when you’re willing to take a turn off the main road. We’re so grateful to share this place—and this weekend—with all of you.</p>
+
+      <div class="callout">
+        <div class="dot"></div>
+        <div>
+          <strong>Next up</strong>
+          <div style="color:var(--muted); font-size:13px; margin-top:4px;">
+            Head to the Weekend Overview for the timeline, then Ceremony Info for directions and logistics.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div>© <span id="year"></span> Zsanelle & Ryan</div>
+      <div>Made with love in Death Valley</div>
+    </div>
+  </div>
+
+  <!-- Minimal JS for menu + year -->
+  <script>
+    (function(){
+      const btn = document.getElementById('hamburger');
+      const menu = document.getElementById('menu');
+      const ddBtn = document.getElementById('sectionsBtn');
+      const dd = document.getElementById('sectionsDD');
+
+      function closeDropdown(){ if(dd) dd.classList.remove('open'); }
+      function closeMenu(){
+        if(menu) menu.classList.remove('open');
+        if(btn) btn.setAttribute('aria-expanded','false');
+      }
+
+      if(btn && menu){
+        btn.addEventListener('click', () => {
+          const open = menu.classList.toggle('open');
+          btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+          if(!open) closeDropdown();
+        });
+      }
+
+      if(ddBtn && dd){
+        ddBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          const isOpen = dd.classList.toggle('open');
+          ddBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+      }
+
+      document.addEventListener('click', (e) => {
+        const clickedInsideDD = dd && dd.contains(e.target);
+        const clickedDDButton = ddBtn && ddBtn.contains(e.target);
+        if(dd && !clickedInsideDD && !clickedDDButton) closeDropdown();
+      });
+
+      document.querySelectorAll('a[data-nav]').forEach(a=>{
+        a.addEventListener('click', ()=>{
+          closeDropdown();
+          closeMenu();
+        });
+      });
+
+      const year = document.getElementById('year');
+      if(year) year.textContent = new Date().getFullYear();
+    })();
+  </script>
+</body>
+</html>
