@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Dining — Zsanelle & Ryan</title>
+  <meta name="description" content="Dining options at The Oasis at Death Valley and nearby, plus our best tips." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <!-- Top Navigation -->
+  <div class="topbar">
+    <div class="nav">
+      <div class="brand">
+        <div class="kicker">Death Valley Wedding Weekend</div>
+        <div class="title">Zsanelle & Ryan</div>
+      </div>
+
+      <div class="nav-right">
+        <div class="chip"><strong>Jan 9–11, 2026</strong> · Oasis at Death Valley</div>
+
+        <button id="hamburger" class="hamburger" aria-label="Open menu" aria-expanded="false">Menu</button>
+
+        <div id="menu" class="menu">
+          <a class="primary" href="index.html" data-nav>Home</a>
+
+          <div id="sectionsDD" class="dropdown">
+            <button id="sectionsBtn" aria-expanded="false">Sections ▾</button>
+            <div class="dropdown-panel" role="menu" aria-label="Sections">
+              <div class="group">Wedding Weekend</div>
+              <a href="welcome.html" data-nav>Welcome to Death Valley</a>
+              <a href="overview.html" data-nav>Weekend Overview</a>
+              <a href="ceremony.html" data-nav>Ceremony Info</a>
+              <a href="dress-weather.html" data-nav>Dress Code & Weather</a>
+              <a href="gifts.html" data-nav>Gift Giving</a>
+
+              <div class="group">Explore & Eat</div>
+              <a href="exploring.html" data-nav>Exploring Death Valley</a>
+              <a href="dining.html" data-nav>Dining</a>
+
+              <div class="group">Help</div>
+              <a href="faq.html" data-nav>FAQ</a>
+            </div>
+          </div>
+
+          <a href="overview.html" data-nav>Timeline</a>
+          <a href="faq.html" data-nav>FAQ</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Page Content -->
+  <div class="wrap">
+    <div class="breadcrumb"><a href="index.html" style="color:var(--accent)">Home</a> / Dining</div>
+
+    <h1 class="section-title">Dining</h1>
+    <div class="small">The essentials: what’s good, what’s convenient, and what to plan ahead for.</div>
+    <div class="divider"></div>
+
+    <div class="card">
+      <h2>Friday & Saturday (Wedding Events)</h2>
+      <ul>
+        <li><strong>Friday 4–6 PM:</strong> Welcome cocktail party (apps + carving station)</li>
+        <li><strong>Saturday 5 PM:</strong> Wine + apps + violin</li>
+        <li><strong>Saturday 6:30 PM:</strong> Dinner</li>
+      </ul>
+
+      <div class="callout">
+        <div class="dot"></div>
+        <div>
+          <strong>Bottom line</strong>
+          <div style="color:var(--muted); font-size:13px; margin-top:4px;">
+            You won’t need to plan dinner Friday or Saturday night — we’ve got you.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2>The Oasis (On-site)</h2>
+        <p>If you want easy, this is the move. It’s also the most “no-stress” option in the whole park.</p>
+        <ul>
+          <li><strong>The Inn Dining Room:</strong> more formal / sit-down</li>
+          <li><strong>The Ranch:</strong> casual options</li>
+          <li><strong>Bars:</strong> yes, order the prickly pear margarita</li>
+        </ul>
+        <p class="small">Tip: reservations can help during busy times.</p>
+      </div>
+
+      <div class="card">
+        <h2>Plan Ahead</h2>
+        <p>Death Valley is remote. Food options exist, but they’re not “walk outside and choose from 20 restaurants.”</p>
+        <ul>
+          <li>If you’re picky, plan meals at the resort</li>
+          <li>If you’re adventurous, you’ll be totally fine</li>
+          <li>Bring snacks (you’ll thank yourself)</li>
+        </ul>
+        <p class="small">You are not going to starve. You are also not in LA.</p>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:14px;">
+      <h2>Snacks & Survival (Highly Recommended)</h2>
+      <p>We want you hydrated, happy, and not hangry in the desert. A few easy wins:</p>
+      <ul>
+        <li>Throw a few snacks in your bag before exploring</li>
+        <li>Bring water in the car</li>
+        <li>Eat something before the ceremony caravan</li>
+      </ul>
+      <div class="callout">
+        <div class="dot"></div>
+        <div>
+          <strong>Our official snack stance</strong>
+          <div style="color:var(--muted); font-size:13px; margin-top:4px;">
+            Snacks are always appropriate. Always.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div>© <span id="year"></span> Zsanelle & Ryan</div>
+      <div>Made with love in Death Valley</div>
+    </div>
+  </div>
+
+  <!-- Minimal JS for menu + year -->
+  <script>
+    (function(){
+      const btn = document.getElementById('hamburger');
+      const menu = document.getElementById('menu');
+      const ddBtn = document.getElementById('sectionsBtn');
+      const dd = document.getElementById('sectionsDD');
+
+      function closeDropdown(){ if(dd) dd.classList.remove('open'); }
+      function closeMenu(){
+        if(menu) menu.classList.remove('open');
+        if(btn) btn.setAttribute('aria-expanded','false');
+      }
+
+      if(btn && menu){
+        btn.addEventListener('click', () => {
+          const open = menu.classList.toggle('open');
+          btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+          if(!open) closeDropdown();
+        });
+      }
+
+      if(ddBtn && dd){
+        ddBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          const isOpen = dd.classList.toggle('open');
+          ddBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+      }
+
+      document.addEventListener('click', (e) => {
+        const clickedInsideDD = dd && dd.contains(e.target);
+        const clickedDDButton = ddBtn && ddBtn.contains(e.target);
+        if(dd && !clickedInsideDD && !clickedDDButton) closeDropdown();
+      });
+
+      document.querySelectorAll('a[data-nav]').forEach(a=>{
+        a.addEventListener('click', ()=>{
+          closeDropdown();
+          closeMenu();
+        });
+      });
+
+      const year = document.getElementById('year');
+      if(year) year.textContent = new Date().getFullYear();
+    })();
+  </script>
+</body>
+</html>
