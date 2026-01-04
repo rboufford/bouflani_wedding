@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Engagement Photos — Zsanelle & Ryan</title>
+  <meta name="description" content="A few of our favorite engagement photos." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <div class="topbar">
+    <div class="nav">
+      <div class="brand">
+        <div class="kicker">Death Valley Wedding Weekend</div>
+        <div class="title">Zsanelle & Ryan</div>
+      </div>
+
+      <div class="nav-right">
+        <div class="chip"><strong>Jan 9–11, 2026</strong> · Oasis at Death Valley</div>
+
+        <button id="hamburger" class="hamburger" aria-label="Open menu" aria-expanded="false">Menu</button>
+
+        <div id="menu" class="menu">
+          <a class="primary" href="index.html" data-nav>Home</a>
+          <a href="welcome.html" data-nav>Welcome</a>
+          <a href="overview.html" data-nav>Weekend Overview</a>
+          <a href="ceremony.html" data-nav>Ceremony</a>
+          <a href="dress-weather.html" data-nav>Dress & Weather</a>
+          <a href="exploring.html" data-nav>Exploring</a>
+          <a href="dining.html" data-nav>Dining</a>
+          <a href="gifts.html" data-nav>Gift Giving</a>
+          <a href="faq.html" data-nav>FAQ</a>
+          <a href="photos.html" data-nav>Engagement Photos</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="breadcrumb"><a href="index.html" style="color:var(--accent)">Home</a> / Engagement Photos</div>
+
+    <h1 class="section-title">Engagement Photos</h1>
+    <div class="small">A few favorites we wanted to share with you.</div>
+    <div class="divider"></div>
+
+    <div class="card">
+      <p class="small" style="margin:0 0 10px;">Tap any photo to view it larger.</p>
+
+      <div class="photo-grid">
+        <!-- Replace filenames with your uploaded images -->
+        <a class="photo" href="assets/engagement/engagement-01.jpg" target="_blank" rel="noopener">
+          <img src="assets/engagement/engagement-01.jpg" alt="Engagement photo 1" loading="lazy">
+        </a>
+        <a class="photo" href="assets/engagement/engagement-02.jpg" target="_blank" rel="noopener">
+          <img src="assets/engagement/engagement-02.jpg" alt="Engagement photo 2" loading="lazy">
+        </a>
+        <a class="photo" href="assets/engagement/engagement-03.jpg" target="_blank" rel="noopener">
+          <img src="assets/engagement/engagement-03.jpg" alt="Engagement photo 3" loading="lazy">
+        </a>
+        <a class="photo" href="assets/engagement/engagement-04.jpg" target="_blank" rel="noopener">
+          <img src="assets/engagement/engagement-04.jpg" alt="Engagement photo 4" loading="lazy">
+        </a>
+        <a class="photo" href="assets/engagement/engagement-05.jpg" target="_blank" rel="noopener">
+          <img src="assets/engagement/engagement-05.jpg" alt="Engagement photo 5" loading="lazy">
+        </a>
+        <a class="photo" href="assets/engagement/engagement-06.jpg" target="_blank" rel="noopener">
+          <img src="assets/engagement/engagement-06.jpg" alt="Engagement photo 6" loading="lazy">
+        </a>
+      </div>
+
+      <div class="callout" style="margin-top:14px;">
+        <div class="dot"></div>
+        <div>
+          <strong>Note</strong>
+          <div style="color:var(--muted); font-size:13px; margin-top:4px;">
+            If photos load slowly, upload smaller versions (phone screenshots are usually fine).
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div>© <span id="year"></span> Zsanelle & Ryan</div>
+      <div>Made with love in Death Valley</div>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      const btn = document.getElementById('hamburger');
+      const menu = document.getElementById('menu');
+
+      if(btn && menu){
+        btn.addEventListener('click', () => {
+          const open = menu.classList.toggle('open');
+          btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+      }
+
+      document.querySelectorAll('a[data-nav]').forEach(a=>{
+        a.addEventListener('click', ()=> {
+          menu.classList.remove('open');
+          btn.setAttribute('aria-expanded','false');
+        });
+      });
+
+      const year = document.getElementById('year');
+      if(year) year.textContent = new Date().getFullYear();
+    })();
+  </script>
+</body>
+</html>
