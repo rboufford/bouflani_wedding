@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Exploring Death Valley — Zsanelle & Ryan</title>
+  <meta name="description" content="Nearby sights and quick exploring ideas close to the Oasis at Death Valley." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <!-- Top Navigation -->
+  <div class="topbar">
+    <div class="nav">
+      <div class="brand">
+        <div class="kicker">Death Valley Wedding Weekend</div>
+        <div class="title">Zsanelle & Ryan</div>
+      </div>
+
+      <div class="nav-right">
+        <div class="chip"><strong>Jan 9–11, 2026</strong> · Oasis at Death Valley</div>
+
+        <button id="hamburger" class="hamburger" aria-label="Open menu" aria-expanded="false">Menu</button>
+
+        <div id="menu" class="menu">
+          <a class="primary" href="index.html" data-nav>Home</a>
+
+          <div id="sectionsDD" class="dropdown">
+            <button id="sectionsBtn" aria-expanded="false">Sections ▾</button>
+            <div class="dropdown-panel" role="menu" aria-label="Sections">
+              <div class="group">Wedding Weekend</div>
+              <a href="welcome.html" data-nav>Welcome to Death Valley</a>
+              <a href="overview.html" data-nav>Weekend Overview</a>
+              <a href="ceremony.html" data-nav>Ceremony Info</a>
+              <a href="dress-weather.html" data-nav>Dress Code & Weather</a>
+              <a href="gifts.html" data-nav>Gift Giving</a>
+
+              <div class="group">Explore & Eat</div>
+              <a href="exploring.html" data-nav>Exploring Death Valley</a>
+              <a href="dining.html" data-nav>Dining</a>
+
+              <div class="group">Help</div>
+              <a href="faq.html" data-nav>FAQ</a>
+            </div>
+          </div>
+
+          <a href="overview.html" data-nav>Timeline</a>
+          <a href="faq.html" data-nav>FAQ</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Page Content -->
+  <div class="wrap">
+    <div class="breadcrumb"><a href="index.html" style="color:var(--accent)">Home</a> / Exploring</div>
+
+    <h1 class="section-title">Exploring Death Valley</h1>
+    <div class="small">A few favorites near the hotel—quick, iconic, and worth the stop.</div>
+    <div class="divider"></div>
+
+    <div class="card">
+      <p>
+        Part of our draw to Death Valley is the unexpected beauty. Yes, it’s famous for being the hottest place on Earth,
+        but it’s also full of dramatic landscapes and awe-inspiring views. We hope you carve out a little time to explore—
+        even a quick drive can feel like you’ve landed on another planet. Below are a few highlights near the hotel (and
+        there’s plenty more on the National Park website).
+      </p>
+
+      <div class="callout">
+        <div class="dot"></div>
+        <div>
+          <strong>Pro tip</strong>
+          <div style="color:var(--muted); font-size:13px; margin-top:4px;">
+            Cell service is limited. Download offline maps before you head out.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Zabriskie Point</h2>
+        <p>Classic sunrise/sunset views with minimal walking.</p>
+        <ul>
+          <li>~10–15 min from The Inn</li>
+          <li>Vault toilets available</li>
+          <li>Great for photos</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>Artist’s Palette</h2>
+        <p>A short scenic drive with colorful hills (and one of our favorites).</p>
+        <ul>
+          <li>~25–30 min from The Inn</li>
+          <li>Easy from Zabriskie Point</li>
+          <li>Vault toilets available</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>Badwater Basin</h2>
+        <p>The lowest point in North America—wide open and surreal.</p>
+        <ul>
+          <li>~20–25 min from The Inn</li>
+          <li>Flat, easy walking</li>
+          <li>Bring sunglasses + water</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>Mesquite Flat Sand Dunes</h2>
+        <p>Short walk from the parking lot to dunes—great near golden hour.</p>
+        <ul>
+          <li>~20–25 min from The Inn</li>
+          <li>Sand + wind = fun hair</li>
+          <li>Closed-toe shoes recommended</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:14px;">
+      <h2>Short “Do This If You Only Have 2 Hours” Plan</h2>
+      <ol style="margin:10px 0 0 18px; color:var(--muted);">
+        <li>Drive to <strong>Zabriskie Point</strong> for the view</li>
+        <li>Continue to <strong>Artist’s Palette</strong> for the colors</li>
+        <li>Head back to the hotel for a drink at The Oasis</li>
+      </ol>
+      <div class="small" style="margin-top:10px;">Low effort, high reward.</div>
+    </div>
+
+    <div class="footer">
+      <div>© <span id="year"></span> Zsanelle & Ryan</div>
+      <div>Made with love in Death Valley</div>
+    </div>
+  </div>
+
+  <!-- Minimal JS for menu + year -->
+  <script>
+    (function(){
+      const btn = document.getElementById('hamburger');
+      const menu = document.getElementById('menu');
+      const ddBtn = document.getElementById('sectionsBtn');
+      const dd = document.getElementById('sectionsDD');
+
+      function closeDropdown(){ if(dd) dd.classList.remove('open'); }
+      function closeMenu(){
+        if(menu) menu.classList.remove('open');
+        if(btn) btn.setAttribute('aria-expanded','false');
+      }
+
+      if(btn && menu){
+        btn.addEventListener('click', () => {
+          const open = menu.classList.toggle('open');
+          btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+          if(!open) closeDropdown();
+        });
+      }
+
+      if(ddBtn && dd){
+        ddBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          const isOpen = dd.classList.toggle('open');
+          ddBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+      }
+
+      document.addEventListener('click', (e) => {
+        const clickedInsideDD = dd && dd.contains(e.target);
+        const clickedDDButton = ddBtn && ddBtn.contains(e.target);
+        if(dd && !clickedInsideDD && !clickedDDButton) closeDropdown();
+      });
+
+      document.querySelectorAll('a[data-nav]').forEach(a=>{
+        a.addEventListener('click', ()=>{
+          closeDropdown();
+          closeMenu();
+        });
+      });
+
+      const year = document.getElementById('year');
+      if(year) year.textContent = new Date().getFullYear();
+    })();
+  </script>
+</body>
+</html>
