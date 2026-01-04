@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Dress Code & Weather — Zsanelle & Ryan</title>
+  <meta name="description" content="What to wear, what to pack, and what not to stress about for a desert wedding weekend." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <!-- Top Navigation -->
+  <div class="topbar">
+    <div class="nav">
+      <div class="brand">
+        <div class="kicker">Death Valley Wedding Weekend</div>
+        <div class="title">Zsanelle & Ryan</div>
+      </div>
+
+      <div class="nav-right">
+        <div class="chip"><strong>Jan 9–11, 2026</strong> · Oasis at Death Valley</div>
+
+        <button id="hamburger" class="hamburger" aria-label="Open menu" aria-expanded="false">Menu</button>
+
+        <div id="menu" class="menu">
+          <a class="primary" href="index.html" data-nav>Home</a>
+
+          <div id="sectionsDD" class="dropdown">
+            <button id="sectionsBtn" aria-expanded="false">Sections ▾</button>
+            <div class="dropdown-panel" role="menu" aria-label="Sections">
+              <div class="group">Wedding Weekend</div>
+              <a href="welcome.html" data-nav>Welcome to Death Valley</a>
+              <a href="overview.html" data-nav>Weekend Overview</a>
+              <a href="ceremony.html" data-nav>Ceremony Info</a>
+              <a href="dress-weather.html" data-nav>Dress Code & Weather</a>
+              <a href="gifts.html" data-nav>Gift Giving</a>
+
+              <div class="group">Explore & Eat</div>
+              <a href="exploring.html" data-nav>Exploring Death Valley</a>
+              <a href="dining.html" data-nav>Dining</a>
+
+              <div class="group">Help</div>
+              <a href="faq.html" data-nav>FAQ</a>
+            </div>
+          </div>
+
+          <a href="overview.html" data-nav>Timeline</a>
+          <a href="faq.html" data-nav>FAQ</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Page Content -->
+  <div class="wrap">
+    <div class="breadcrumb"><a href="index.html" style="color:var(--accent)">Home</a> / Dress & Weather</div>
+
+    <h1 class="section-title">Dress Code & Weather</h1>
+    <div class="small">Desert wedding weekend — comfortable, elevated, and photo-friendly.</div>
+    <div class="divider"></div>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Dress Code</h2>
+        <p><strong>Wedding attire:</strong> Cocktail / Semi-formal</p>
+        <ul>
+          <li>Think: polished, fun, and something you feel good in</li>
+          <li>Comfortable shoes encouraged (rocky ground at the ceremony)</li>
+          <li>Bring a layer — desert temps can shift quickly</li>
+        </ul>
+        <div class="callout">
+          <div class="dot"></div>
+          <div>
+            <strong>Color vibe (optional):</strong>
+            <div style="color:var(--muted); font-size:13px; margin-top:4px;">
+              Desert tones, neutrals, warm earth colors, and soft jewel tones photograph beautifully here.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Weather</h2>
+        <p>Death Valley is famous for heat… but in January it can be wonderfully mild.</p>
+        <ul>
+          <li>Days: often pleasant and sunny</li>
+          <li>Evenings: can get chilly (especially with wind)</li>
+          <li>Sun is still strong — sunglasses and SPF are your friends</li>
+        </ul>
+        <p class="small">We’ll share a more specific forecast closer to the weekend.</p>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:14px;">
+      <h2>What to Pack</h2>
+      <div class="grid">
+        <div>
+          <ul style="margin:10px 0 0 18px; color:var(--muted);">
+            <li>Wedding outfit + backup layer</li>
+            <li>Comfortable shoes (ceremony + exploring)</li>
+            <li>Light jacket / shawl / blazer</li>
+            <li>Sunglasses</li>
+            <li>SPF / chapstick</li>
+          </ul>
+        </div>
+        <div>
+          <ul style="margin:10px 0 0 18px; color:var(--muted);">
+            <li>Water bottle</li>
+            <li>Optional: hat</li>
+            <li>Optional: small flashlight/headlamp (if you’re out stargazing)</li>
+            <li>Phone charger / portable battery</li>
+            <li>Downloaded offline maps</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:14px;">
+      <h2>What Not to Worry About</h2>
+      <ul>
+        <li><strong>Perfection.</strong> We’re in the desert. A little wind, a little dust, and a little adventure are part of the charm.</li>
+        <li><strong>Being “too dressed up” or “not dressed up enough.”</strong> If you’re comfortable and feel good, you nailed it.</li>
+        <li><strong>Hair and makeup surviving the elements.</strong> You’ll still look amazing — and the photos will too.</li>
+        <li><strong>Knowing the schedule by heart.</strong> Just show up for the lobby meet and caravan. We’ll handle the rest.</li>
+      </ul>
+
+      <div class="callout">
+        <div class="dot"></div>
+        <div>
+          <strong>Bottom line</strong>
+          <div style="color:var(--muted); font-size:13px; margin-top:4px;">
+            Come comfortable, bring a layer, and plan to have fun. That’s the whole dress code.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div>© <span id="year"></span> Zsanelle & Ryan</div>
+      <div>Made with love in Death Valley</div>
+    </div>
+  </div>
+
+  <!-- Minimal JS for menu + year -->
+  <script>
+    (function(){
+      const btn = document.getElementById('hamburger');
+      const menu = document.getElementById('menu');
+      const ddBtn = document.getElementById('sectionsBtn');
+      const dd = document.getElementById('sectionsDD');
+
+      function closeDropdown(){ if(dd) dd.classList.remove('open'); }
+      function closeMenu(){
+        if(menu) menu.classList.remove('open');
+        if(btn) btn.setAttribute('aria-expanded','false');
+      }
+
+      if(btn && menu){
+        btn.addEventListener('click', () => {
+          const open = menu.classList.toggle('open');
+          btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+          if(!open) closeDropdown();
+        });
+      }
+
+      if(ddBtn && dd){
+        ddBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          const isOpen = dd.classList.toggle('open');
+          ddBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+      }
+
+      document.addEventListener('click', (e) => {
+        const clickedInsideDD = dd && dd.contains(e.target);
+        const clickedDDButton = ddBtn && ddBtn.contains(e.target);
+        if(dd && !clickedInsideDD && !clickedDDButton) closeDropdown();
+      });
+
+      document.querySelectorAll('a[data-nav]').forEach(a=>{
+        a.addEventListener('click', ()=>{
+          closeDropdown();
+          closeMenu();
+        });
+      });
+
+      const year = document.getElementById('year');
+      if(year) year.textContent = new Date().getFullYear();
+    })();
+  </script>
+</body>
+</html>
