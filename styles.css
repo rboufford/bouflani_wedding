@@ -321,3 +321,30 @@ a:focus, button:focus{outline:2px solid rgba(122,59,46,.30); outline-offset:2px}
   font-weight:700;
 }
 .table tr:last-child td{border-bottom:0}
+
+/* Photo Grid */
+.photo-grid{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:10px;
+}
+@media (max-width: 900px){
+  .photo-grid{ grid-template-columns: repeat(2, 1fr); }
+}
+.photo{
+  display:block;
+  border-radius:14px;
+  overflow:hidden;
+  border:1px solid var(--line);
+  background:#fff;
+  box-shadow: 0 10px 25px rgba(0,0,0,.06);
+}
+.photo img{
+  width:100%;
+  height:100%;
+  aspect-ratio: 4 / 5;
+  object-fit:cover;
+  display:block;
+  transition: transform .18s ease;
+}
+.photo:hover img{ transform: scale(1.02); }
