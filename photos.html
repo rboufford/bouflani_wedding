@@ -231,30 +231,34 @@
     const lbClose = document.getElementById('lightboxClose');
     const lbPrev = document.getElementById('lightboxPrev');
     const lbNext = document.getElementById('lightboxNext');
-
+    
     const items = Array.from(document.querySelectorAll('.photo-grid a.photo'));
     const urls = items.map(a => a.getAttribute('data-full') || a.getAttribute('href'));
     let idx = 0;
-
+    
+    function isOpen(){ return lb.classList.contains('open'); }
+    
     function openAt(i){
       idx = (i + urls.length) % urls.length;
       lbImg.src = urls[idx];
+    
       lb.classList.add('open');
       lb.setAttribute('aria-hidden','false');
       document.body.style.overflow = 'hidden';
     }
-
+    
     function close(){
       lb.classList.remove('open');
       lb.setAttribute('aria-hidden','true');
       document.body.style.overflow = '';
-      // clear src after a tiny delay to avoid flash on close in some browsers
-      setTimeout(()=>{ lbImg.src = ''; }, 60);
+    
+      // Clear src after close to avoid flashes / stuck images
+      setTimeout(()=>{ lbImg.src = ''; }, 50);
     }
-
+    
     function next(){ openAt(idx + 1); }
     function prev(){ openAt(idx - 1); }
-
+    
     // Click photos -> lightbox
     items.forEach((a, i)=>{
       a.addEventListener('click', (e)=>{
@@ -262,49 +266,55 @@
         openAt(i);
       });
     });
-
-    // Controls
-    lbClose && lbClose.addEventListener('click', close);
-    lbNext && lbNext.addEventListener('click', next);
-    lbPrev && lbPrev.addEventListener('click', prev);
-
-    // Click outside image closes
+    
+    // Controls (stopPropagation so clicks don't fall through)
+    if (lbClose){
+      lbClose.addEventListener('click', (e)=>{ e.stopPropagation(); close(); });
+      // iOS sometimes behaves better with touchend too
+      lbClose.addEventListener('touchend', (e)=>{ e.stopPropagation(); close(); }, {passive:false});
+    }
+    if (lbNext) lbNext.addEventListener('click', (e)=>{ e.stopPropagation(); next(); });
+    if (lbPrev) lbPrev.addEventListener('click', (e)=>{ e.stopPropagation(); prev(); });
+    
+    // Click anywhere outside the image closes
     lb.addEventListener('click', (e)=>{
-      if(e.target === lb) close();
+      if(!isOpen()) return;
+    
+      // If the click is NOT on the image, close
+      if (e.target !== lbImg) close();
     });
-
+    
     // Keyboard
     document.addEventListener('keydown', (e)=>{
-      if(!lb.classList.contains('open')) return;
+      if(!isOpen()) return;
       if(e.key === 'Escape') close();
       if(e.key === 'ArrowRight') next();
       if(e.key === 'ArrowLeft') prev();
     });
-
+    
     // Touch swipe
-    let startX = 0, startY = 0, dragging = false;
-
+    let startX = 0, startY = 0;
+    
     lb.addEventListener('touchstart', (e)=>{
-      if(!lb.classList.contains('open')) return;
+      if(!isOpen()) return;
       const t = e.touches[0];
       startX = t.clientX;
       startY = t.clientY;
-      dragging = true;
     }, {passive:true});
-
+    
     lb.addEventListener('touchend', (e)=>{
-      if(!lb.classList.contains('open') || !dragging) return;
-      dragging = false;
+      if(!isOpen()) return;
       const t = e.changedTouches[0];
       const dx = t.clientX - startX;
       const dy = t.clientY - startY;
-
-      // Require mostly-horizontal swipe
+    
+      // Mostly-horizontal swipe
       if(Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.2){
         if(dx < 0) next();
         else prev();
       }
     }, {passive:true});
+
   })();
 </script>
 
