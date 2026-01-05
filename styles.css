@@ -416,3 +416,20 @@ a:focus, button:focus{outline:2px solid rgba(122,59,46,.30); outline-offset:2px}
   .lightbox img{ max-width:96vw; max-height:82vh; }
   .lightbox-nav{ width:46px; height:46px; font-size:30px; }
 }
+/* Ensure lightbox controls are clickable above the image */
+.lightbox-close,
+.lightbox-nav{
+  z-index: 10001;
+  pointer-events: auto;
+}
+
+/* Make the "empty area" clickable to close */
+.lightbox{
+  cursor: zoom-out;
+}
+
+/* Key fix:
+   Let taps/clicks go through the inner wrapper so the background receives them,
+   but keep the image clickable/swipeable. */
+.lightbox-inner{ pointer-events: none; }
+.lightbox img{ pointer-events: auto; cursor: default; }
